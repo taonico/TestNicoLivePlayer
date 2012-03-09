@@ -1,16 +1,8 @@
-/**
- * 
- */
 package jp.tao.nico.live.test;
 
 import android.test.AndroidTestCase;
 import jp.tao.nico.live.*;
 
-
-/**
- * @author 
- *
- */
 public class NicoRequestTest extends AndroidTestCase {
 
 	/**

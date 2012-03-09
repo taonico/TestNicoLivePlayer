@@ -105,9 +105,8 @@ public class NicoLivePlayerActivityTest extends ActivityInstrumentationTestCase2
 		});
 		
 		instrumentation.waitForIdleSync();
-		while (etResponse.getText().equals("")){
-			assertEquals("ログインしました", etResponse.getText());
-		}
+		while (etResponse.getText().toString().equals("")){	}
+		assertTrue(etResponse.getText().toString().equals("ログインしました"));
 	}
 	
 	public void testLoginUnSuccess(){
@@ -123,8 +122,7 @@ public class NicoLivePlayerActivityTest extends ActivityInstrumentationTestCase2
 		});
 		
 		instrumentation.waitForIdleSync();
-		while (etResponse.getText().equals("")){
-			assertEquals("ログインできませんでした", etResponse.getText());
-		}
+		while (etResponse.getText().toString().equals("")){ }
+		assertTrue(etResponse.getText().toString().equals("ログインできませんでした"));
 	}
 }
