@@ -12,6 +12,10 @@ public class NicoRequestTest extends AndroidTestCase {
 	private String mail = "";
 	private String password = "";
 	
+	private String cookieName = "user_session";
+	private String user_session = "user_session_18181135_265723068460000908";
+	private String cookieDomain = ".nicovideo.jp";
+	
 	public NicoRequestTest() {
 		super();
 	}
@@ -41,5 +45,15 @@ public class NicoRequestTest extends AndroidTestCase {
 		nicoRequest.login(mail, password);
 		assertTrue(nicoRequest.isLogin());
 	}
-
+	
+	public void testLoginCookie1(){
+		NicoRequest nicoRequest = new NicoRequest(nicoMessage);
+		nicoRequest.login(mail, password);
+		assertEquals(nicoRequest.getLoginCookie(),nicoRequest.getLoginCookie(nicoRequest.getCookieStore()));
+	}
+	public void testLoginCookie2(){
+		NicoRequest nicoRequest = new NicoRequest(nicoMessage);
+		nicoRequest.setLoginCookie(cookieName + "=" + user_session + ";domain=" +cookieDomain + ";Path=/");
+		assertEquals(nicoRequest.getLoginCookie(),(cookieName + "=" + user_session + ";domain=" + cookieDomain + ";Path=/"));
+	}
 }
